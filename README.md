@@ -31,7 +31,7 @@ First: make sure your serial program is reasonably fast:
     - 1e4 particles, 12 threads (OpenMP on Apple M2 Pro): 7.5 seconds
     - 1e4 particles, NVIDIA A100 GPU: **1.1 seconds**
 
-# Example 3: Thermal diffusion (PDE)
+## Example 3: Thermal diffusion (PDE)
 
 - Domain decomposition with nearest-neighbor communication
 - Distributed on multiple nodes (MPI), each with shared-memory parallelization

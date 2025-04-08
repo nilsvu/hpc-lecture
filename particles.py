@@ -11,6 +11,7 @@ def compute_forces(positions, masses):
     forces = np.zeros((num_particles, 3))
 
     # Parallelize the outer loop over particles
+    # for i in range(num_particles):
     for i in numba.prange(num_particles):
         # Add up forces from all other particles
         total_force = np.zeros(3)
@@ -27,7 +28,6 @@ def compute_forces(positions, masses):
     return forces
 
 
-@numba.jit(nopython=True)
 def take_timestep(positions, velocities, masses, dt):
     num_particles = len(positions)
     forces = compute_forces(positions, masses)
@@ -68,7 +68,7 @@ if __name__ == "__main__":
 
     # Warm up the JIT compiler
     print("Warming up JIT compiler...")
-    take_timestep(positions, velocities, masses, dt)
+    take_timestep(np.zeros((0, 3)), np.zeros((0, 3)), np.zeros(0), dt)
 
     # Simulation loop
     start_time = time.time()

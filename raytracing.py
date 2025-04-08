@@ -1,4 +1,4 @@
-import multiprocessing as mp
+import multiprocessing
 import numpy as np
 import time
 from scipy.integrate import solve_ivp
@@ -72,10 +72,10 @@ if __name__ == "__main__":
         results.append(trace_ray(b))
 
     # Multiprocessing:
-    start_time = time.time()
-    with mp.Pool() as pool:
-        results = pool.map(trace_ray, impact_params)
-    print(f"Simulation time: {time.time() - start_time:.2f} seconds")
+    # start_time = time.time()
+    # with multiprocessing.Pool() as pool:
+    #     results = pool.map(trace_ray, impact_params)
+    # print(f"Simulation time: {time.time() - start_time:.2f} seconds")
 
     # Plot the trajectories
     plot_trajectories(results)
